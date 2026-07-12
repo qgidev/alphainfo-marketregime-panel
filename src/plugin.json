@@ -8,6 +8,7 @@
       "panel",
       "finance",
       "fintech",
+      "market-regime",
       "volatility",
       "regime-change",
       "structural-break",
@@ -45,7 +46,20 @@
         "url": "https://alphainfo.io/pricing"
       }
     ],
-    "screenshots": [],
+    "screenshots": [
+      {
+        "name": "Volatility regime break detected — deep timeline localizes where it happened",
+        "path": "img/screenshot-vol-regime-break.png"
+      },
+      {
+        "name": "Payment volume telemetry — structure drifting, monitor before it breaks",
+        "path": "img/screenshot-payment-volume.png"
+      },
+      {
+        "name": "Calm market control — quiet when it should be quiet",
+        "path": "img/screenshot-calm-control.png"
+      }
+    ],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },
