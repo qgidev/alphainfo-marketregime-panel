@@ -14,7 +14,9 @@ const EXPECTED = [
 
 const browser = await chromium.launch();
 const page = await browser.newPage({
-  viewport: { width: 1800, height: 1500 },
+  // Viewport alto pra visão geral: o Grafana só monta painel visível (lazy),
+  // então os 4 painéis empilhados precisam caber. Solo shots saem em 16:9.
+  viewport: { width: 1920, height: 2400 },
   userAgent:
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
 });
@@ -66,6 +68,25 @@ const result = await page.evaluate(() => {
 });
 
 await page.screenshot({ path: '../smoke/evidence-fin.png', fullPage: true });
+
+// Solo shots 16:9 (1920×1080) por painel — material de catálogo.
+const solo = await browser.newPage({
+  viewport: { width: 1920, height: 1080 },
+  userAgent:
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+});
+for (const n of [1, 2, 3, 4]) {
+  await solo.goto(`${URL}&viewPanel=${n}`, { waitUntil: 'networkidle' });
+  await solo
+    .waitForSelector('[data-testid$="-badge"]', { timeout: 90_000 })
+    .catch(() => null);
+  await solo
+    .waitForSelector('[data-testid$="-timeline"]', { timeout: 30_000 })
+    .catch(() => null);
+  await solo.waitForTimeout(1_200);
+  await solo.screenshot({ path: `../smoke/shots-fin/panel-${n}.png` });
+  console.log(`solo 16:9 salvo: ../smoke/shots-fin/panel-${n}.png`);
+}
 await browser.close();
 
 let pass = 0, fail = 0;
