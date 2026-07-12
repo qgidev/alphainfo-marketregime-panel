@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "panel",
+  "name": "AlphaInfo Market Regime Monitor",
+  "id": "alphainfo-marketregime-panel",
+  "info": {
+    "keywords": [
+      "panel",
+      "finance",
+      "fintech",
+      "volatility",
+      "regime-change",
+      "structural-break",
+      "risk-monitoring",
+      "payments",
+      "market-data",
+      "anomaly-detection",
+      "time-series",
+      "alphainfo"
+    ],
+    "description": "Market regime monitoring for finance and fintech telemetry — returns, volatility, spreads, transaction volumes, settlement latencies. Classifies signal structure as stable / transition / unstable with a finance-calibrated engine (heavy tails, mean reversion), so risk and payment-ops teams see volatility regime shifts and structural breaks instead of threshold noise. Verdict badge, overlay, optional per-window deep timeline, audit replay for compliance, live quota footer. Detects structural change, not price direction — not investment advice.",
+    "author": {
+      "name": "alphainfo.io",
+      "url": "https://alphainfo.io"
+    },
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://alphainfo.io"
+      },
+      {
+        "name": "API Guide",
+        "url": "https://alphainfo.io/v1/guide"
+      },
+      {
+        "name": "Get a free API key",
+        "url": "https://alphainfo.io/register"
+      },
+      {
+        "name": "sponsor",
+        "url": "https://alphainfo.io/pricing"
+      }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=12.3.0",
+    "plugins": []
+  }
+}

@@ -1,0 +1,28 @@
+# This GitHub Action automates the process of building Grafana plugins with
+# provenance attestation (sigstore), per Grafana submission recommendations.
+# https://github.com/grafana/plugin-actions/blob/main/build-plugin/README.md
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions: read-all
+
+jobs:
+  release:
+    permissions:
+      id-token: write
+      contents: write
+      attestations: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: grafana/plugin-actions/build-plugin@build-plugin/v1.2.0
+        with:
+          policy_token: ${{ secrets.GRAFANA_ACCESS_POLICY_TOKEN }}
+          attestation: true

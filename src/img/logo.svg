@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- AlphaInfo Market Regime Monitor — dark navy badge, silver ring, green
+       signal whose volatility regime shifts at the midpoint: calm market
+       becoming turbulent. Same brand family as the rest of the suite. -->
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2F3F5"/>
+      <stop offset="0.45" stop-color="#9DA3AE"/>
+      <stop offset="0.75" stop-color="#E4E6EA"/>
+      <stop offset="1" stop-color="#7F8694"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#141C2B"/>
+      <stop offset="1" stop-color="#0B111C"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="256" r="244" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="236" fill="none" stroke="url(#ring)" stroke-width="11"/>
+  <circle cx="256" cy="256" r="228" fill="none" stroke="#0A0F18" stroke-width="3" opacity="0.6"/>
+
+  <!-- calm, gently mean-reverting regime (left) -->
+  <path d="M96 262
+           q 20 -22 40 0 t 40 0 t 40 0 t 40 0"
+        fill="none" stroke="#66BB6A" stroke-width="13"
+        stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <!-- regime shift marker -->
+  <line x1="256" y1="192" x2="256" y2="322" stroke="#66BB6A" stroke-width="5"
+        stroke-linecap="round" stroke-dasharray="2 14" opacity="0.85"/>
+  <!-- volatile, heavy-tailed regime (right): candlestick-like strokes -->
+  <g stroke="#66BB6A" stroke-width="13" stroke-linecap="round" filter="url(#glow)">
+    <line x1="278" y1="216" x2="278" y2="308"/>
+    <line x1="308" y1="188" x2="308" y2="292"/>
+    <line x1="338" y1="238" x2="338" y2="334"/>
+    <line x1="368" y1="176" x2="368" y2="286"/>
+    <line x1="396" y1="228" x2="396" y2="316"/>
+  </g>
+</svg>
