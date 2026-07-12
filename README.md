@@ -65,7 +65,23 @@ window rides along as the reference (same 1-analysis cost). Scores above
 between = **transition**. Give each side 400+ samples for confident
 classification.
 
-Two boundaries to respect when reading verdicts on market data:
+**Alerting rule of thumb:** treat *unstable* as the pager signal and
+*transition* as "monitor" — the transition band is deliberately
+conservative on financial series.
+
+### What to feed it (the one rule that matters)
+
+Feed **stationary series**: returns (simple or log), realized volatility,
+spreads, volumes, error rates — **not raw price levels**. A trending price
+level makes the end of the window structurally different from its start
+even in a perfectly calm market. Measured example (synthetic but
+realistic): a calm, gently drifting price series read *transition* (score
+0.47) with the **D5 axis collapsed to 0.46**, while calm return series
+read 0.62–0.79 with **D5 healthy at 0.80**. That is the tell: **high D1
+with collapsed D5 means the verdict is about the trend in the level, not
+the market's structure — switch the query to returns** and re-analyze.
+
+Two more boundaries to respect when reading verdicts on market data:
 
 - A regime shift means the series' **structure** changed (volatility
   clustering, spectral content, tail behavior) — it says nothing about
