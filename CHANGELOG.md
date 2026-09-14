@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 — 2026-09-14
+
+- Multiscale analysis is now ON by default (`useMultiscale: true`), matching the
+  alphainfo API 2.4.0, SDK and playground defaults. Turn it off in Analysis →
+  Multiscale for fast mode. Existing dashboards keep their saved value.
+- Built and signed through the CI pipeline (provenance attestation).
+
 ## 1.0.0 (Unreleased)
 
 Initial release.
